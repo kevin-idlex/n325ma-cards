@@ -21,11 +21,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
-        with:
-          enablement: true
-      - uses: actions/upload-pages-artifact@v3
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+        continue-on-error: true
+      - name: Upload artifact
+        if: steps.pages.outcome == 'success'
+        uses: actions/upload-pages-artifact@v3
         with:
           path: .
-      - id: deployment
+      - name: Deploy
+        id: deployment
+        if: steps.pages.outcome == 'success'
         uses: actions/deploy-pages@v4
+      - name: Pages not enabled yet
+        if: steps.pages.outcome != 'success'
+        run: |
+          echo "GitHub Pages is not enabled on this repo yet."
+          echo "One-time fix (repo admin): Settings → Pages → Build and deployment → Source: GitHub Actions"
+          echo "Then re-run this workflow (Actions → Deploy GitHub Pages → Run workflow)."
+          exit 1
