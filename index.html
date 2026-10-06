@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="N325MA Cards"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="theme-color" content="#0f172a"/>
+<title>N325MA Cards</title>
+<link rel="manifest" href="manifest.json"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.svg"/>
+<link rel="stylesheet" href="app.css"/>
+</head>
+<body><div id="app">
+  <header>
+    <h1>N325MA Cards</h1>
+    <div class="progress" id="progress">0/0</div>
+    <select id="cat" aria-label="Category">
+      <option value="ALL">All</option>
+      <option value="Speeds">Speeds</option>
+      <option value="Limitations">Limitations</option>
+      <option value="Normal">Normal</option>
+      <option value="Emergency">Emergency</option>
+      <option value="SFAR 108">SFAR 108</option>
+    </select>
+    <button class="iconbtn" id="shuffleBtn" type="button">Shuffle</button>
+    <button class="iconbtn" id="themeBtn" type="button">Theme</button>
+  </header>
+  <main>
+    <div id="stage">
+      <div class="card" id="card" role="button" aria-label="Flip card">
+        <div class="face front active" id="faceFront">
+          <div class="cat-pill" id="catPill">Speeds</div>
+          <div class="verify" id="verifyFront">⚠ VERIFY IN AFM / STC AFMS</div>
+          <div class="q" id="qText"></div>
+          <div class="hint">Tap card to flip · swipe for next/prev</div>
+        </div>
+        <div class="face back" id="faceBack">
+          <div class="cat-pill" id="catPillB">Speeds</div>
+          <div class="verify" id="verifyBack">⚠ VERIFY IN AFM / STC AFMS</div>
+          <div class="a" id="aText"></div>
+          <div class="source" id="sourceText"></div>
+        </div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="big" id="prevBtn" type="button">◀ Prev</button>
+      <button class="big" id="nextBtn" type="button">Next ▶</button>
+    </div>
+    <div class="controls">
+      <button class="big again" id="againBtn" type="button">Again</button>
+      <button class="big good" id="gotBtn" type="button">Got it</button>
+    </div>
+    <div class="controls">
+      <button class="big primary" id="flipBtn" type="button">Flip</button>
+      <button class="big" id="resetBtn" type="button" style="font-size:18px">Reset prog</button>
+    </div>
+  </main>
+</div>
+<div class="toast" id="toast"></div><script src="app.js"></script></body></html>
